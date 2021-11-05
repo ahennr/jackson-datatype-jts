@@ -65,7 +65,7 @@ public abstract class BaseJtsModuleTest<T extends Geometry> {
     protected void assertRoundTrip(T geom) throws IOException {
         String json = writer.writeValueAsString(geom);
         System.out.println(json);
-        Geometry regeom = mapper.reader(Geometry.class).readValue(json);
+        Geometry regeom = mapper.readerFor(Geometry.class).readValue(json);
         assertThat(geom.equalsExact(regeom), is(true));
     }
 }
